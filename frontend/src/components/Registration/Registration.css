@@ -1,0 +1,467 @@
+* {
+  box-sizing: border-box;
+}
+
+.registration-page {
+  min-height: 100vh;
+  background: #f4f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.registration-card {
+  width: 100%;
+  max-width: 850px;
+  background: white;
+  border-radius: 18px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Header */
+
+.registration-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo-circle {
+  width: 55px;
+  height: 55px;
+  background: #1261d6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 12px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.registration-header h1 {
+  margin: 0;
+  color: #12345b;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.registration-header p {
+  margin: 8px 0 5px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.registration-header span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Progress */
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.progress-step.active {
+  color: #1261d6;
+  font-weight: 600;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #cbd5e1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress-step.active .step-number {
+  background: #1261d6;
+  border-color: #1261d6;
+  color: white;
+}
+
+.progress-line {
+  width: 120px;
+  height: 2px;
+  background: #dbe3ee;
+  margin: 0 15px;
+}
+
+/* Form */
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  height: 48px;
+  border: 1px solid #d5dce6;
+  border-radius: 9px;
+  padding: 0 14px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #1261d6;
+  box-shadow: 0 0 0 3px rgba(18, 97, 214, 0.1);
+}
+
+.error {
+  color: #dc2626;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+/* OTP information */
+
+.otp-info {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  padding: 16px;
+  border-radius: 10px;
+  margin-top: 28px;
+}
+
+.otp-info span {
+  font-size: 22px;
+}
+
+.otp-info strong {
+  color: #1e40af;
+  font-size: 14px;
+}
+
+.otp-info p {
+  margin: 5px 0 0;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Button */
+
+.continue-btn {
+  width: 100%;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 9px;
+  background: #1261d6;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.continue-btn:hover {
+  background: #0d4eaf;
+}
+
+.continue-btn span {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+/* Login */
+
+.login-text {
+  text-align: center;
+  margin-top: 22px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.login-text button {
+  border: none;
+  background: none;
+  color: #1261d6;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .registration-card {
+    padding: 25px 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .progress-line {
+    width: 40px;
+  }
+
+  .progress-step span {
+    display: none;
+  }
+}
+
+/* =========================
+   OTP VERIFICATION
+========================= */
+
+.otp-card {
+  max-width: 650px;
+}
+
+.completed .step-number {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: white;
+}
+
+.active-line {
+  background: #1261d6;
+}
+
+.email-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 30px;
+}
+
+.email-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background: #dbeafe;
+  color: #1261d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.email-info strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+.email-info p {
+  margin: 5px 0 0;
+  color: #1261d6;
+  font-weight: 600;
+}
+
+/* OTP inputs */
+
+.otp-section {
+  text-align: center;
+}
+
+.otp-section label {
+  display: block;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.otp-inputs input {
+  width: 55px;
+  height: 60px;
+  border: 2px solid #d5dce6;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #12345b;
+  outline: none;
+}
+
+.otp-inputs input:focus {
+  border-color: #1261d6;
+  box-shadow: 0 0 0 3px rgba(18, 97, 214, 0.1);
+}
+
+.otp-error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.otp-success {
+  color: #16a34a;
+  font-size: 13px;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* Demo OTP */
+
+.demo-otp {
+  margin-top: 25px;
+  padding: 14px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9px;
+  text-align: center;
+}
+
+.demo-otp strong {
+  color: #c2410c;
+  font-size: 13px;
+}
+
+.demo-otp p {
+  margin: 5px 0 0;
+  color: #9a3412;
+  font-size: 13px;
+}
+
+.demo-otp b {
+  font-size: 15px;
+}
+
+/* Back button */
+
+.back-btn {
+  display: block;
+  margin: 18px auto 0;
+  border: none;
+  background: transparent;
+  color: #1261d6;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+/* Resend */
+
+.resend-section {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.resend-section button {
+  border: none;
+  background: none;
+  color: #1261d6;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.resend-section button:hover {
+  text-decoration: underline;
+}
+
+/* Mobile OTP */
+
+@media (max-width: 500px) {
+
+  .otp-inputs {
+    gap: 7px;
+  }
+
+  .otp-inputs input {
+    width: 45px;
+    height: 52px;
+    font-size: 20px;
+  }
+
+}
+
+/* =========================
+   SUCCESS PAGE
+========================= */
+
+.success-card {
+  max-width: 600px;
+  text-align: center;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.success-card h1 {
+  color: #12345b;
+  margin-bottom: 12px;
+}
+
+.success-card p {
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
