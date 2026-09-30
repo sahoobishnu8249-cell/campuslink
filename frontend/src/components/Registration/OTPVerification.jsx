@@ -7,6 +7,7 @@ function OTPVerification({ studentData, onVerified, onBack }) {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [isVerifying, setIsVerifying] = useState(false);
   const [timeLeft, setTimeLeft] = useState(OTP_TTL_SECONDS);
   const [resendWait, setResendWait] = useState(30);
   const inputRefs = useRef([]);
@@ -37,7 +38,7 @@ function OTPVerification({ studentData, onVerified, onBack }) {
     setError("");
   };
 
-  const handleVerify = () => {
+  const handleVerify = async () => {
     const code = otp.join("");
     if (code.length !== 6) {
       setError("Please enter the complete 6-digit OTP.");
@@ -51,8 +52,15 @@ function OTPVerification({ studentData, onVerified, onBack }) {
       setError("Incorrect code. Use the demo OTP shown below.");
       return;
     }
-    setSuccess(true);
-    onVerified();
+    setIsVerifying(true);
+    try {
+      await onVerified();
+      setSuccess(true);
+    } catch (verificationError) {
+      setError(verificationError.message || "Could not finish creating your account. Please try again.");
+    } finally {
+      setIsVerifying(false);
+    }
   };
 
   const handleResend = () => {
@@ -90,7 +98,7 @@ function OTPVerification({ studentData, onVerified, onBack }) {
           {error && <p className="otp-error" role="alert">{error}</p>}
           {success && <p className="otp-success">✓ Email verified. Your account is active.</p>}
         </div>
-        <button className="continue-btn" onClick={handleVerify} disabled={success || timeLeft === 0}>{success ? "Verified ✓" : <>Verify & continue →</>}</button>
+        <button className="continue-btn" onClick={handleVerify} disabled={success || isVerifying || timeLeft === 0}>{isVerifying ? "Creating account…" : success ? "Verified ✓" : <>Verify & continue →</>}</button>
         <div className="resend-section"><span>Code expires in <b>{time}</b></span><br/><span>Didn't receive the verification code?</span><button type="button" onClick={handleResend} disabled={resendWait > 0}>{resendWait > 0 ? `Resend in ${resendWait}s` : "Resend demo code"}</button></div>
         <button className="back-btn" onClick={onBack}>← Back to registration</button>
       </div>
